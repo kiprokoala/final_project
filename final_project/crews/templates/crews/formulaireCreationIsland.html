@@ -1,0 +1,11 @@
+{% extends 'crews/base.html' %}
+{% block title %}Creating island{% endblock %}
+
+{% block content %}
+<h2>Creating island</h2>
+<form action="/islands/create/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_div }}
+  <input type="submit" value="Create my island">
+</form>
+{% endblock %}

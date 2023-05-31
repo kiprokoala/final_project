@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'crews/css/styles.css' %}">
+    <link rel="icon" href="{% static 'crews/img/mugiwara.png' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<style>
+    a{
+        font-size: 20px;
+    }
+</style>
+<body>
+<header>
+    <nav style="height: 50px; align-items: center;">
+        <div><a href="/crews/">All crews</a></div>
+        <div><a href="/islands/">All islands</a></div>
+        <div><a href="/crews/add/">Add crew</a></div>
+        <div><a href="/islands/add/">Add island</a></div>
+    </nav>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    Crewsures 2023
+</footer>
+</body>
+</html>

@@ -1,5 +1,5 @@
 """
-URL configuration for final_project project.
+URL configuration for one_piece project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,8 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from crews import views
+from django.conf import settings  # new
+from django.conf.urls.static import static  # new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('crews/', views.crews),
+    path('crews/<int:crew_id>/', views.crew),
+    path('crews/add/', views.formulaireCreationCrew),
+    path('crews/create/', views.creerCrew),
+    path('crews/<int:crew_id>/addIsland/', views.ajouterIslandAuCrew),
+
+    path('islands/', views.islands),
+    path('islands/<int:island_id>/', views.island),
+    path('islands/add/', views.formulaireCreationIsland),
+    path('islands/create/', views.creerIsland),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
