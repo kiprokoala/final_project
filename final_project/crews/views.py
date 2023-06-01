@@ -89,6 +89,39 @@ def ajouterIslandAuCrew(request, crew_id):
           "formulaire": formulaire}
         )
 
+def supprimerCrew(request, crew_id):
+
+    crew = Crew.objects.get(crew_id = crew_id)
+    crew.delete()
+    all_crews = Crew.objects.all()
+    return render(
+        request,
+        "crews/crews.html",
+        {"crews" : all_crews}
+    )
+
+def formulaireModificationCrew(request, crew_id):
+
+    crew = Crew.objects.get(crew_id = crew_id)
+    formulaire = CrewForm(instance = crew)
+    return render(
+        request,
+        "crews/formulaireModificationCrew.html",
+        {'form': formulaire, 'crew': crew}
+    )
+
+def modifierCrew(request, crew_id):
+    crew = Crew.objects.get(crew_id = crew_id)
+    formulaire = CrewForm(request.POST, request.FILES, instance = crew)
+    if formulaire.is_valid():
+        formulaire.save()
+        crew = Crew.objects.get(crew_id = crew_id)
+    return render(
+        request,
+        "crews/traitementFormulaireModificationCrew.html",
+        {'crew': crew}
+    )
+
 def island(request, island_id):
 
     print(island_id)
@@ -140,4 +173,37 @@ def creerIsland(request):
         request,
         "crews/createIsland.html",
         {"island_name": island_name, "form" : form}
+    )
+
+def supprimerIsland(request, island_id):
+
+    island = Island.objects.get(island_id = island_id)
+    island.delete()
+    all_islands = Island.objects.all()
+    return render(
+        request,
+        "crews/islands.html",
+        {"islands" : all_islands}
+    )
+
+def formulaireModificationIsland(request, island_id):
+
+    island = Island.objects.get(island_id = island_id)
+    formulaire = IslandForm(instance = island)
+    return render(
+        request,
+        "crews/formulaireModificationIsland.html",
+        {'form': formulaire, 'island': island}
+    )
+
+def modifierIsland(request, island_id):
+    island = Island.objects.get(island_id = island_id)
+    formulaire = IslandForm(request.POST, request.FILES, instance = island)
+    if formulaire.is_valid():
+        formulaire.save()
+        island = Island.objects.get(island_id = island_id)
+    return render(
+        request,
+        "crews/traitementFormulaireModificationIsland.html",
+        {'island': island}
     )

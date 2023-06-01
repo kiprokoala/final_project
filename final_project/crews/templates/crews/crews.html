@@ -2,11 +2,9 @@
     (click to see details)</h2>
 <div class="list_elements">
     {% for crew in crews %}
-    <div class="block">
-        <a href="/crews/{{crew.crew_id}}" class="inside_block"> <img src="{{ crew.crew_pic.url }}" width='200'
-                                alt="The picture of the {{ crew.crew_name }}"/>
-            <div style="color: black; display: flex; justify-content: center;">{{ crew.crew_name }}</div>
-        </a>
-    </div>
+    <a href="/crews/{{crew.crew_id}}" style="    margin-right: 50px;">
+        <div class="block" style="background-image: url('{{ crew.crew_pic.url }}')"></div>
+        <div style="color: black; display: flex; justify-content: center;">{{ crew.crew_name }}</div>
+    </a>
     {% endfor %}
 </div>{% endblock %}

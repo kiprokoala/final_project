@@ -28,10 +28,16 @@ urlpatterns = [
     path('crews/add/', views.formulaireCreationCrew),
     path('crews/create/', views.creerCrew),
     path('crews/<int:crew_id>/addIsland/', views.ajouterIslandAuCrew),
+    path('crews/<int:crew_id>/delete/', views.supprimerCrew),
+    path('crews/<int:crew_id>/update/', views.formulaireModificationCrew),
+    path('crews/<int:crew_id>/updated/', views.modifierCrew),
 
     path('islands/', views.islands),
     path('islands/<int:island_id>/', views.island),
     path('islands/add/', views.formulaireCreationIsland),
     path('islands/create/', views.creerIsland),
+    path('islands/<int:island_id>/delete/', views.supprimerIsland),
+    path('islands/<int:island_id>/update/', views.formulaireModificationIsland),
+    path('islands/<int:island_id>/updated/', views.modifierIsland),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

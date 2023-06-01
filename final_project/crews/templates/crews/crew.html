@@ -4,8 +4,10 @@
 {% block content %}
 <h2>Info : </h2>
 <p>{{ crew }}</p>
+<a href="/crews/{{crew.crew_id}}/update" style="color: black;">Modifier</a><br><br>
+<a href="/crews/{{crew.crew_id}}/delete" style="color: black;">Supprimer</a><br><br>
 <form action="/crews/{{crew.crew_id}}/addIsland/" method="post">
-    {% csrf_token %}}
+    {% csrf_token %}
     {{ formulaire.as_div }}
     <input type="submit" value="Add this island">
 </form>

@@ -1,0 +1,18 @@
+{% extends 'crews/base.html' %}
+{% block title %}
+Island modification
+{% endblock %}
+
+{% block content %}
+<h2>Island modification</h2>
+<form action="/islands/{{island.island_id}}/updated/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <style>
+        a{
+            color: black;
+        }
+    </style>
+    {{ form.as_div }}
+    <input type="submit" value="Modificate my island">
+</form>
+{% endblock %}
