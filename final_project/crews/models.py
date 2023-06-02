@@ -7,7 +7,7 @@ class Crew(models.Model):
     crew_pic = models.ImageField(upload_to = 'images/crew/')
 
     def __str__(self) -> str:
-        return 'crew ' + self.crew_name
+        return 'Crew ' + self.crew_name
 
 class Island(models.Model):
     island_id = models.AutoField(primary_key = True)
@@ -16,7 +16,7 @@ class Island(models.Model):
     island_pic = models.ImageField(upload_to = 'images/island/')
 
     def __str__(self) -> str:
-        return 'island ' + self.island_name + ' located in ' + self.island_region
+        return 'Island ' + self.island_name
 
 class Has(models.Model):
     class Meta :

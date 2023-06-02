@@ -1,12 +1,14 @@
-{% extends 'crews/base.html' %}{% block title %}Islands{% endblock %}{% block content %}<h2>Here are the islands
-    available (click to see details)</h2>
+{% extends 'crews/base.html' %}{% block title %}Islands{% endblock %}{% load static %}
+{% block content %}<h2 class="title">All Islands</h2>
 <div class="list_elements">
+    <a href="/islands/add/" class="bulle">
+        <div class="block" style="background-image: url('{% static 'crews/img/add.png' %}')"></div>
+    </a>
     {% for island in islands %}
-    <div class="block">
-        <a href="/islands/{{island.island_id}}">
-            <div class="inside_block"><img src="{{ island.island_pic.url }}" width='200' alt="The picture of a {{ island.island_name }}"/>
-            </div><div style="color: black; display: flex; justify-content: center;">{{ island.island_name }}</div>
-        </a>
+    <a href="/islands/{{island.island_id}}" style="margin: 0 50px; width: 150px;">
+    <div class="block" style="background-image: url('{{ island.island_pic.url }}')"></div>
+    <div style="color: black; display: flex; justify-content: center; word-break: break-word; text-align: center;">
+        {{ island.island_name }}
     </div>
-    {% endfor %}
+</a> {% endfor %}
 </div>{% endblock %}

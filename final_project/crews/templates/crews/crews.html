@@ -1,10 +1,15 @@
-{% extends 'crews/base.html' %}{% block title %}Crews{% endblock %}{% block content %}<h2>Here are the crews available
-    (click to see details)</h2>
+{% extends 'crews/base.html' %}{% block title %}Crews{% endblock %}
+{% load static %}
+{% block content %}
+<h2 class="title">All Crews</h2>
 <div class="list_elements">
+    <a href="/crews/add/" class="bulle">
+        <div class="block" style="background-image: url('{% static 'crews/img/add.png' %}')"></div>
+    </a>
     {% for crew in crews %}
-    <a href="/crews/{{crew.crew_id}}" style="    margin-right: 50px;">
+    <a href="/crews/{{crew.crew_id}}" class="bulle">
         <div class="block" style="background-image: url('{{ crew.crew_pic.url }}')"></div>
-        <div style="color: black; display: flex; justify-content: center;">{{ crew.crew_name }}</div>
+        <div class="legend">{{ crew.crew_name }}</div>
     </a>
     {% endfor %}
 </div>{% endblock %}

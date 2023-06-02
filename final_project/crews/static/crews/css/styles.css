@@ -16,8 +16,8 @@ a {
 
 .block {
     border-radius: 50%;
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     background-size: cover;
     background-position: center center;
 }
@@ -25,4 +25,48 @@ a {
 .list_elements {
     display: flex;
     flex-wrap: wrap;
+}
+
+.title {
+    text-align: center;
+}
+
+.bulle {
+    margin: 0 50px;
+    width: 150px;
+}
+
+.legend {
+    color: black;
+    display: flex;
+    justify-content: center;
+    word-break: break-word;
+    text-align: center;
+}
+
+.title_name{
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center center;
+    margin-right: 10px;
+}
+
+.submit{
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+.myfieldclass{
+    background-color: darkred;
 }

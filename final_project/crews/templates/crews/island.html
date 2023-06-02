@@ -1,9 +1,17 @@
 {% extends 'crews/base.html' %}
 {% block title %}Island's details{% endblock %}
-
+{% load static %}
 {% block content %}
-<h2>Info : </h2>
-<p>{{ island }}</p>
-<a href="/islands/{{island.island_id}}/update" style="color: black;">Modifier</a><br><br>
-<a href="/islands/{{island.island_id}}/delete" style="color: black;">Supprimer</a><br><br>
+<div style="display: flex; justify-content: space-between;">
+    <div></div>
+    <p class="title_name">{{ island }}</p>
+    <div style="display: flex; flex-direction: row;">
+        <a href="/islands/{{island.island_id}}/update/">
+            <div class="button" style="background-image: url('{% static 'crews/img/modify.png' %}')"></div>
+        </a>
+        <a href="/islands/{{island.island_id}}/delete/">
+            <div class="button" style="background-image: url('{% static 'crews/img/delete.png' %}');"></div>
+        </a>
+    </div>
+</div>
 {% endblock %}

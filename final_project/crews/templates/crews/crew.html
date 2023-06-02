@@ -1,24 +1,24 @@
-{% extends 'crews/base.html' %}
-{% block title %}Crew's details{% endblock %}
-
-{% block content %}
-<h2>Info : </h2>
-<p>{{ crew }}</p>
-<a href="/crews/{{crew.crew_id}}/update" style="color: black;">Modifier</a><br><br>
-<a href="/crews/{{crew.crew_id}}/delete" style="color: black;">Supprimer</a><br><br>
+{% extends 'crews/base.html' %}{% block title %}Crew's details{% endblock %}{% load static %}{% block content %}
+<div style="display: flex; justify-content: space-between;">
+    <div></div>
+    <p class="title_name">{{ crew }}</p>
+    <div style="display: flex; flex-direction: row;">
+        <a href="/crews/{{crew.crew_id}}/update/">
+            <div class="button" style="background-image: url('{% static 'crews/img/modify.png' %}')"></div>
+        </a> <a href="/crews/{{crew.crew_id}}/delete/">
+        <div class="button" style="background-image: url('{% static 'crews/img/delete.png' %}');"></div>
+    </a>
+    </div>
+</div>
 <form action="/crews/{{crew.crew_id}}/addIsland/" method="post">
     {% csrf_token %}
-    {{ formulaire.as_div }}
-    <input type="submit" value="Add this island">
+    <div style="display: flex;align-items: center;margin: 20px;">{{ formulaire.as_div }} <input type="submit" value="Add this island" class="submit"></div>
 </form>
 <div class="list_elements">
-    {% for island in island_list %}
-    <div class="block">
-        <a href="/islands/{{ island.id }}/" class="inside_block"> <img src="{{ island.pic.url }}" width='200'
-                                                                     alt="The picture of the {{ island.name }}"/>
-            <div style="color: black; display: flex; justify-content: center;">{{ island.name }}</div>
-        </a>
+    {% for island in island_list %} <a href="/islands/{{island.id}}" style="margin: 0 50px; width: 150px;">
+    <div class="block" style="background-image: url('{{ island.pic.url }}')"></div>
+    <div style="color: black; display: flex; justify-content: center; word-break: break-word; text-align: center;">
+        {{ island.name }}
     </div>
-    {% endfor %}
-</div>
-{% endblock %}
+</a> {% endfor %}
+</div>{% endblock %}
