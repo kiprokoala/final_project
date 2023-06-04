@@ -10,9 +10,12 @@
     </a>
     </div>
 </div>
-<form action="/crews/{{crew.crew_id}}/addIsland/" method="post">
+<form action="/crews/{{crew.crew_id}}/addIsland/" method="post" class="adding_island">
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 260px;">
     {% csrf_token %}
-    <div style="display: flex;align-items: center;margin: 20px;">{{ formulaire.as_div }} <input type="submit" value="Add this island" class="submit"></div>
+    {{ formulaire.as_div }}
+    <input type="submit" style="background: url('{% static 'crews/img/add.png' %}');background-size: cover;background-position: center center;" value="" class="adding_island_button">
+    </div>
 </form>
 <div class="list_elements">
     {% for island in island_list %} <a href="/islands/{{island.id}}" style="margin: 0 50px; width: 150px;">

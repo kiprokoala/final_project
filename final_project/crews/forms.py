@@ -12,8 +12,7 @@ class IslandForm(ModelForm):
         model = Island
         fields = ['island_name', 'island_region', 'island_pic']
 
-class HasForm(forms.Form):
-    model = Has
-    island = forms.ModelChoiceField(label = "island", queryset=Island.objects.all(), widget=forms.ModelChoiceField(attrs={'class': 'myfieldclass'}))
-
-    #fields = ['island']
+class HasForm(ModelForm):
+    class Meta:
+        model = Has
+        fields = ['island']

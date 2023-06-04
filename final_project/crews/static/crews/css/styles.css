@@ -67,6 +67,26 @@ a {
     margin-left: 5px;
 }
 
-.myfieldclass{
-    background-color: darkred;
+select{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    text-align: center;
+    border: 1px solid black;
+    background-color: transparent;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.adding_island{
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+.adding_island_button{
+    border: 0;
+    display: block;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
