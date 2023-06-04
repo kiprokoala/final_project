@@ -2,7 +2,7 @@
 {% block title %}
 Crew modification
 {% endblock %}
-
+{% load static %}
 {% block content %}
 <h2>Crew modification</h2>
 <form action="/crews/{{crew.crew_id}}/updated/" method="post" enctype="multipart/form-data">
@@ -10,6 +10,10 @@ Crew modification
     <style>
         a{
             color: black;
+        }
+
+        input[type=file]{
+            background: url('{% static 'crews/img/upload.png' %}');
         }
     </style>
     {{ form.as_div }}

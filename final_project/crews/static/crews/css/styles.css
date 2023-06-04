@@ -9,9 +9,13 @@ nav {
     background-color: purple;
 }
 
-a {
+.top_link {
     text-decoration: none;
     color: white;
+}
+
+a{
+    text-decoration: none;
 }
 
 .block {
@@ -78,15 +82,35 @@ select{
     border-radius: 50px;
 }
 
-.adding_island{
+form{
     margin-bottom: 30px;
     margin-left: 50px;
 }
 
-.adding_island_button{
+
+input[type=submit]{
+    margin-top: 10px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    height: 40px;
     border: 0;
+}
+
+.adding_island_button, input[type=file]::file-selector-button {
+    border: 0;
+    margin:0!important;
     display: block;
-    border-radius: 50%;
+    border-radius: 50%!important;
     width: 40px;
     height: 40px;
+}
+
+input[type=text]{
+    border: 1px none black;
+    background-color: transparent;
+    outline: none;
+}
+
+input[type=text]:focus{
+    border-bottom-style: solid;
 }

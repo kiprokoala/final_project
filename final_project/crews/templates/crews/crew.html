@@ -10,7 +10,7 @@
     </a>
     </div>
 </div>
-<form action="/crews/{{crew.crew_id}}/addIsland/" method="post" class="adding_island">
+<form action="/crews/{{crew.crew_id}}/addIsland/" method="post">
     <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 260px;">
     {% csrf_token %}
     {{ formulaire.as_div }}
