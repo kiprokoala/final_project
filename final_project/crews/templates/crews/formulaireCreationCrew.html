@@ -1,11 +1,33 @@
 {% extends 'crews/base.html' %}
 {% block title %}Creating crew{% endblock %}
-
+{% load static %}
 {% block content %}
+
+<style>
+  .file_upload{
+    position: relative;
+    top: -20px;
+    right: -70px;
+    background: url('{% static 'crews/img/upload.png' %}');
+    background-size: cover;
+    background-position: center center;
+  }
+</style>
+
 <h2>Creating crew</h2>
 <form action="/crews/create/" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_div }}
+  <label for="id_crew_pic" class="file_upload"></label>
   <input type="submit" value="Create my crew">
 </form>
+
+<script>
+  function load() {
+    input = document.getElementById("id_crew_pic");
+    input.style.visibility = "hidden";
+    input.value = "";
+  }
+</script>
+
 {% endblock %}

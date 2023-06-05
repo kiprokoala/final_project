@@ -1,11 +1,33 @@
 {% extends 'crews/base.html' %}
 {% block title %}Creating island{% endblock %}
-
+{% load static %}
 {% block content %}
+
+<style>
+  .file_upload{
+    position: relative;
+    top: -20px;
+    right: -70px;
+    background: url('{% static 'crews/img/upload.png' %}');
+    background-size: cover;
+    background-position: center center;
+  }
+</style>
+
 <h2>Creating island</h2>
 <form action="/islands/create/" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_div }}
+  <label for="id_island_pic" class="file_upload"></label>
   <input type="submit" value="Create my island">
 </form>
+
+<script>
+  function load() {
+    input = document.getElementById("id_island_pic");
+    input.style.visibility = "hidden";
+    input.value = "";
+  }
+</script>
+
 {% endblock %}

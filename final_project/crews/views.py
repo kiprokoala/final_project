@@ -23,7 +23,8 @@ def crew(request, crew_id):
         island = Island.objects.get(island_id=h.island.island_id)
         island_list.append({"name": island.island_name,
                                  "pic": island.island_pic,
-                                 "id": island.island_id})
+                                 "id": island.island_id,
+                                 "has_id": h.has_id})
 
     return render(
         request,
@@ -81,7 +82,8 @@ def ajouterIslandAuCrew(request, crew_id):
         island = Island.objects.get(island_id=h.island.island_id)
         island_list.append({"name": island.island_name,
                                  "pic": island.island_pic,
-                                 "id": island.island_id})
+                                 "id": island.island_id,
+                                 "has_id": h.has_id})
     return render(request,
         "crews/crew.html",
         {"crew" : the_crew,
@@ -121,6 +123,30 @@ def modifierCrew(request, crew_id):
         "crews/traitementFormulaireModificationCrew.html",
         {'crew': crew}
     )
+
+def supprimerIslandForCrew(request, crew_id, has_id):
+
+    formulaire = HasForm()
+
+    has = Has.objects.filter(has_id = has_id)
+    has.delete()
+
+    the_crew = Crew.objects.get(crew_id = crew_id)
+    has = Has.objects.filter(crew_id = crew_id)
+    island_list = []
+    for h in has:
+        island = Island.objects.get(island_id=h.island.island_id)
+        island_list.append({"name": island.island_name,
+                                 "pic": island.island_pic,
+                                 "id": island.island_id,
+                                 "has_id": h.has_id})
+
+    return render(
+        request,
+        "crews/crew.html",
+        {"crew" : the_crew, "island_list" : island_list, "formulaire": formulaire}
+    )
+
 
 def island(request, island_id):
 

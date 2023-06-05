@@ -31,6 +31,7 @@ urlpatterns = [
     path('crews/<int:crew_id>/delete/', views.supprimerCrew),
     path('crews/<int:crew_id>/update/', views.formulaireModificationCrew),
     path('crews/<int:crew_id>/updated/', views.modifierCrew),
+    path('crews/<int:crew_id>/deleteIsland/<int:has_id>/', views.supprimerIslandForCrew),
 
     path('islands/', views.islands),
     path('islands/<int:island_id>/', views.island),
