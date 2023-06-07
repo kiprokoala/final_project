@@ -14,4 +14,10 @@
         </a>
     </div>
 </div>
+<div style="display: flex; flex-direction: column; width: 200px; justify-content: left;">
+    <a href="/regions/{{region.region_id}}/" style="margin: 0 30px; width: 150px;background-image: url('{{ region.region_pic.url }}'); display: flex; flex-direction: row;" class="block"></a>
+    <div style="color: black; word-break: break-word; text-align: center;">
+        {{ region.region_name }}
+    </div>
+</div>
 {% endblock %}

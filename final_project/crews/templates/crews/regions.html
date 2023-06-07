@@ -1,0 +1,11 @@
+{% extends 'crews/base.html' %}{% block title %}Regions{% endblock %}{% load static %}
+{% block content %}<h2 class="title">All Regions</h2>
+<div class="list_elements">
+    {% for region in regions %}
+    <a href="/regions/{{region.region_id}}" style="margin: 0 50px; width: 150px;">
+        <div class="block" style="background-image: url('{{ region.region_pic.url }}')"></div>
+        <div style="color: black; display: flex; justify-content: center; word-break: break-word; text-align: center;">
+            {{ region.region_name }}
+        </div>
+    </a> {% endfor %}
+</div>{% endblock %}

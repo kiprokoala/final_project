@@ -9,10 +9,18 @@ class Crew(models.Model):
     def __str__(self) -> str:
         return 'Crew ' + self.crew_name
 
+class Region(models.Model):
+    region_id = models.AutoField(primary_key = True)
+    region_name = models.CharField(max_length = 50, verbose_name = "region's name ")
+    region_pic = models.ImageField(upload_to = 'images/region/')
+
+    def __str__(self) -> str:
+        return 'Region ' + self.region_name
+
 class Island(models.Model):
     island_id = models.AutoField(primary_key = True)
     island_name = models.CharField(max_length = 50, verbose_name = "island's name ")
-    island_region = models.CharField(max_length = 50, verbose_name = "island's location ")
+    island_region = models.ForeignKey(Region, on_delete=models.CASCADE)
     island_pic = models.ImageField(upload_to = 'images/island/')
 
     def __str__(self) -> str:

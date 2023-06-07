@@ -40,5 +40,9 @@ urlpatterns = [
     path('islands/<int:island_id>/delete/', views.supprimerIsland),
     path('islands/<int:island_id>/update/', views.formulaireModificationIsland),
     path('islands/<int:island_id>/updated/', views.modifierIsland),
+
+    path('regions/', views.regions),
+    path('regions/<int:region_id>/', views.region),
+    path('regions/<int:region_id>/delete/', views.supprimerRegion),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

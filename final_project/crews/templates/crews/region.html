@@ -1,0 +1,14 @@
+{% extends 'crews/base.html' %}{% block title %}Region's details{% endblock %}{% load static %}{% block content %}
+<div style="display: flex; justify-content: center;">
+    <p class="title_name">{{ region }}</p>
+</div>
+<div class="list_elements">
+    {% for island in island_list %}
+    <div>
+        <a href="/islands/{{island.id}}" style="margin: 0 30px; width: 150px;background-image: url('{{ island.pic.url }}'); display: flex; flex-direction: row;" class="block"></a>
+        <div style="color: black; display: flex; justify-content: center; word-break: break-word; text-align: center;">
+            {{ island.name }}
+        </div>
+    </div>
+    {% endfor %}
+</div>{% endblock %}

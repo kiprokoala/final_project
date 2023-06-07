@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from crews.models import Crew, Island, Has
+from crews.models import Crew, Island, Has, Region
 from crews.forms import CrewForm, IslandForm, HasForm
 
 def crews(request):
@@ -148,15 +148,31 @@ def supprimerIslandForCrew(request, crew_id, has_id):
     )
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def island(request, island_id):
 
-    print(island_id)
     island = Island.objects.get(island_id = island_id)
-    print(island.island_name)
+    region = Region.objects.get(region_id = island.island_region.region_id)
     return render(
         request,
         "crews/island.html",
-        {"island" : island}
+        {"island" : island, "region" : region}
     )
 
 
@@ -187,10 +203,12 @@ def creerIsland(request):
         island_name = form.cleaned_data['island_name']
         island_region = form.cleaned_data['island_region']
         island_pic = form.cleaned_data['island_pic']
+        region_id = form.cleaned_data['island_region']
         island = Island()
         island.island_name = island_name
         island.island_region = island_region
         island.island_pic = island_pic
+        island.island_region = region_id
         island.save()
     else:
         form = IslandForm()
@@ -232,4 +250,51 @@ def modifierIsland(request, island_id):
         request,
         "crews/traitementFormulaireModificationIsland.html",
         {'island': island}
+    )
+
+
+
+
+
+
+
+
+
+
+def region(request, region_id):
+
+    formulaire = HasForm()
+
+    region = Region.objects.get(region_id = region_id)
+    part = Island.objects.filter(island_region = region_id)
+    island_list = []
+    for p in part:
+        island = Island.objects.get(island_id=p.island_id)
+        island_list.append({"name": island.island_name,
+                                 "pic": island.island_pic,
+                                 "id": island.island_id})
+
+    return render(
+        request,
+        "crews/region.html",
+        {"region" : region, "island_list" : island_list, "formulaire": formulaire}
+    )
+
+def regions(request):
+
+    regions = Region.objects.all()
+
+    return render(
+        request,
+        "crews/regions.html",
+        {"regions" : regions}
+    )
+
+def supprimerRegion(request, region_id):
+    region = Region.objects.get(region_id = region_id)
+    region.delete()
+    return render(
+        request,
+        "crews/regions.html",
+        {'regions': regions}
     )
